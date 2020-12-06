@@ -1,5 +1,5 @@
 import React from 'react';
-import Dragula from 'dragula';
+import dragula from 'dragula';
 import 'dragula/dist/dragula.css';
 import Swimlane from './Swimlane';
 import './Board.css';
@@ -57,6 +57,12 @@ export default class Board extends React.Component {
   }
 
   render() {
+    var drake = dragula({
+      isContainer: function (el) {
+        return el.classList.contains('Swimlane-dragColumn');
+      }
+    });
+    
     return (
       <div className="Board">
         <div className="container-fluid">
