@@ -20,7 +20,10 @@ export default class Board extends React.Component {
       inProgress: React.createRef(),
       complete: React.createRef(),
     }
+
+    // this.changeClassOnDrop = this.changeClassOnDrop.bind(this);
   }
+
   getClients() {
     return [
       ['1','Stark, White and Abbott','Cloned Optimal Architecture', 'in-progress'],
@@ -50,18 +53,39 @@ export default class Board extends React.Component {
       status: companyDetails[3],
     }));
   }
+
   renderSwimlane(name, clients, ref) {
     return (
       <Swimlane name={name} clients={clients} dragulaRef={ref}/>
     );
   }
 
+  // changeClassOnDrop (el, tg, src, sib) {
+  //   var elementClass = el.className;
+  //   const targetClass = sib.className;
+  //   const currentState = this.state
+  //   this.setState({clients: currentState.clients.complete.push('test')})
+  //   console.log(elementClass);
+  //   return
+  // }
+  
+  // componentDidMount = () => {
+  //   // this.changeClassOnDrop();
+  // }
+  
+  // componentDidUpdate = () => {
+  // }
+  
   render() {
     var drake = dragula({
       isContainer: function (el) {
         return el.classList.contains('Swimlane-dragColumn');
       }
     });
+    
+    // drake.on('drop', function(el, target, source, sibling){
+    //   this.changeClassOnDrop(el, target, source, sibling)
+    // })
     
     return (
       <div className="Board">
